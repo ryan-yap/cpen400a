@@ -1,0 +1,46 @@
+.image {
+    margin: 20px;
+    padding: 20px;
+    height: auto;
+    width: auto;
+    float: left;
+    text-align: center;
+}
+
+.image:hover {
+	background-color: gray;
+}
+
+
+.desc {
+    text-align: center;
+    font-weight: normal;
+    width: 200px;
+    margin: 0px;
+}
+
+
+#navigationMenu {
+	float: left;
+    width: 150px;
+    border: 2px solid black;
+}
+
+#navigationMenu a {
+    display: block;
+	height: 30px;
+    width: 80px;
+}
+
+#navigationMenu a:hover {
+	background-color:gray;
+}
+
+
+.price {
+  visibility: hidden;
+}
+
+.image:hover p {
+	visibility: visible;
+}
