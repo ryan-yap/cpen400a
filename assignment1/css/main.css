@@ -1,9 +1,15 @@
+body{
+    width: 1000px;
+    vertical-align: middle;
+    margin: auto;
+}
+
 .product {
     margin: 20px;
     padding: 20px;
     height: auto;
     width: auto;
-    float: left;
+    float: right;
     text-align: center;
 }
 
@@ -11,6 +17,12 @@
 	background-color: gray;
 }
 
+#productList {
+    margin: auto;
+    padding: 0px;
+    width: auto;
+
+}
 
 .desc {
     text-align: center;
@@ -44,4 +56,13 @@
 
 .image:hover p {
 	visibility: visible;
+}
+
+#footer {
+    clear: both;
+    position: relative;
+    z-index: 10;
+    height: 3em;
+    margin-top: -3em;
+    text-align: center;
 }
