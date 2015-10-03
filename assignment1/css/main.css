@@ -54,7 +54,7 @@ body{
   visibility: hidden;
 }
 
-.image:hover p {
+.product:hover p {
 	visibility: visible;
 }
 
