@@ -51,6 +51,10 @@ body{
 
 
 .price {
+  position: relative;
+  top: -75px;
+  left: 0px;
+  background-color:white;
   visibility: hidden;
 }
 
