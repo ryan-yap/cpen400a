@@ -14,6 +14,7 @@ body{
 }
 
 .product:hover {
+    cursor: pointer;
 	background-color: gray;
 }
 
@@ -38,23 +39,37 @@ body{
     border: 2px solid black;
 }
 
-#navigationMenu a {
+#navigationMenu ul{
+    list-style-type : none;
+}
+#navigationMenu p {
+    position: relative;
+    border : 1px solid black;
+    vertical-align: middle;
     display: block;
-	height: 30px;
-    width: 80px;
+    width: auto;
 }
 
-#navigationMenu a:hover {
+#navigationMenu a {
+    text-align: center;
+	#height: 30px;
+    #width: 80px;
+}
+
+#navigationMenu p:hover {
 	background-color:gray;
 	color:green;
 }
 
 
 .price {
-  visibility: hidden;
+    visibility: hidden;
+    position:relative;
+    margin-top: -35px;
+    background: rgba(204, 204, 204, 0.5);
 }
 
-.image:hover p {
+.product:hover .price {
 	visibility: visible;
 }
 
