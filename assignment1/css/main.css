@@ -53,7 +53,7 @@ body{
 .price {
     visibility: hidden;
     position:relative;
-    margin-top: -35px;
+    margin-top: -40px;
     background: rgba(204, 204, 204, 0.5);
 }
 
