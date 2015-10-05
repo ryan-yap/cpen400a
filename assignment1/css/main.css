@@ -40,7 +40,6 @@ body{
 }
 
 #navigationMenu tr td{
-	display: block;
     list-style-type : none;
     text-align: center;
     height: 50px;
