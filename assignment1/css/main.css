@@ -40,15 +40,20 @@ body{
 }
 
 #navigationMenu tr td{
+	display: block;
     list-style-type : none;
     text-align: center;
     height: 50px;
 }
 
+#navigationMenu tr:hover a{
+	color:red;
+}
+
 #navigationMenu tr:hover {
 	background-color:gray;
-	color:green;
 }
+
 
 .price {
     visibility: hidden;
