@@ -89,6 +89,7 @@ body{
 	height :200px;
 }
 .cart {
+	background: rgba(204, 204, 204, 0.5);
 	visibility:hidden;
 	position:relative;
 	width: 200px;
