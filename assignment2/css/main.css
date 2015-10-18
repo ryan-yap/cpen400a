@@ -1,0 +1,75 @@
+body{
+    width: 1000px;
+    vertical-align: middle;
+    margin: auto;
+}
+
+.product {
+    margin: 20px;
+    padding: 20px;
+    height: auto;
+    width: auto;
+    float: right;
+    text-align: center;
+}
+
+.product:hover {
+    cursor: pointer;
+	background-color: gray;
+}
+
+#productList {
+    margin: auto;
+    padding: 0px;
+    width: auto;
+
+}
+
+.desc {
+    text-align: center;
+    font-weight: normal;
+    width: 200px;
+    margin: 0px;
+}
+
+
+#navigationMenu {
+	float: left;
+    width: 150px;
+    border: 2px solid black;
+}
+
+#navigationMenu tr td{
+    list-style-type : none;
+    text-align: center;
+    height: 50px;
+}
+
+#navigationMenu tr:hover a{
+	color:red;
+}
+
+#navigationMenu tr:hover {
+	background-color:gray;
+}
+
+
+.price {
+    visibility: hidden;
+    position:relative;
+    margin-top: -40px;
+    background: rgba(204, 204, 204, 0.5);
+}
+
+.product:hover .price {
+	visibility: visible;
+}
+
+#footer {
+    clear: both;
+    position: relative;
+    z-index: 10;
+    height: 3em;
+    margin-top: -3em;
+    text-align: center;
+}
