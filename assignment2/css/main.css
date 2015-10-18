@@ -18,6 +18,28 @@ body{
 	background-color: gray;
 }
 
+.addButton{
+	padding: 10px 15px 11px ;
+	font-size: 18px ;
+	background-color: #57d6c7;
+	font-weight: bold;
+	color: #ffffff;
+	cursor: pointer;
+	position:relative;
+	visibility:hidden;
+}
+
+.removeButton{
+	padding: 10px 15px 11px ;
+	font-size: 18px ;
+	background-color: #F36C8C;
+	font-weight: bold;
+	color: #ffffff;
+	cursor: pointer;
+	position:relative;
+	visibility: hidden;
+}
+
 #productList {
     margin: auto;
     padding: 0px;
@@ -61,8 +83,35 @@ body{
     background: rgba(204, 204, 204, 0.5);
 }
 
+.productPic {
+	position:absolute;
+	width : 200px;
+	height :200px;
+}
+.cart {
+	visibility:hidden;
+	position:relative;
+	width: 200px;
+	height: 200px;
+}
+
 .product:hover .price {
 	visibility: visible;
+}
+
+.product:hover .cart {
+	visibility: visible;
+	opacity: 0.6;
+}
+
+.product:hover .addButton{
+	visibility:visible;
+	top: -100px;
+}
+
+.product:hover .removeButton{
+	visibility:visible;
+	top: -100px;
 }
 
 #footer {
@@ -73,3 +122,4 @@ body{
     margin-top: -3em;
     text-align: center;
 }
+
