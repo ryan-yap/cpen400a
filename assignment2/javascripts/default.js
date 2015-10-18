@@ -4,6 +4,10 @@ var products = [];
 
 var verbose = true;
 
+var inactiveTime = 0;
+
+var timer = 0;
+
 function initializeProducts(){
 	products["Box1"] =			10;
 	products["Box2"] = 			10;
@@ -22,6 +26,8 @@ function initializeProducts(){
 initializeProducts();
 
 function addToCart(productName) {
+	inactiveTime = 0
+	console.log("Adding To Cart")
     var found = false; 
 	for(var i in cart){
 		if(i == productName){
@@ -49,6 +55,7 @@ function addToCart(productName) {
 }
 
 function removeFromCart(productName) {
+	inactiveTime = 0
 	var found = false;
 	for(var i in cart){
 		if(productName == i){
@@ -68,8 +75,25 @@ function removeFromCart(productName) {
 		console.log("The Cart Now Contains:")
 		for(var j in cart)
 		{
-			
 			console.log("ProductName:" + j + " Quantity" + cart[j]);
 		}
 	}
 }
+
+function startTimer(){
+	console.log("Starting Timer")
+	inactiveTime = 0
+	timer = setInterval( function(){
+	if (inactiveTime < 29){
+		inactiveTime++;
+		console.log(inactiveTime)
+	}else{
+		alert("Hey there! Are you still planning to buy something?")
+		clearInterval(timer);
+		startTimer()
+	}}, 1000)
+}
+
+window.onload = function () {
+    startTimer();
+};
