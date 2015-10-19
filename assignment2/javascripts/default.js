@@ -97,7 +97,7 @@ var showItem = (function () {
 function startTimer(){
 	inactiveTime = 0
 	var timer = setInterval( function(){
-	if (inactiveTime < 5){
+	if (inactiveTime < 29){
 		inactiveTime++;
 		console.log(inactiveTime)
 	}else{
