@@ -6,7 +6,7 @@ var verbose = true;
 
 var inactiveTime = 0;
 
-var timer = 0;
+var isShowingCart = false;
 
 function initializeProducts(){
 	products["Box1"] =			10;
@@ -29,22 +29,22 @@ function addToCart(productName) {
 	inactiveTime = 0
 	console.log("Adding To Cart")
     var found = false; 
-	for(var i in cart){
-		if(i == productName){
-				cart[i]++;
-				found = true;
-				
-				break;
-		}			
-	}	
-	if(!found)
-	{
-		cart[productName] = 1; 
-
-	}	
-	
-	products[productName]--;
-	
+    if(products[productName] > 0){
+		for(var i in cart){
+			if(i == productName ){
+					cart[i]++;
+					found = true;		
+					break;
+			}
+		}	
+		if(!found){
+			cart[productName] = 1; 
+		}		
+		products[productName]--;
+	}
+	else{
+		alert("This item is not in stock you cannot add it to your cart");
+	}
 	if(verbose){
 		console.log("The Cart Now Contains:")
 		for(var j in cart)
@@ -77,21 +77,43 @@ function removeFromCart(productName) {
 		{
 			console.log("ProductName:" + j + " Quantity" + cart[j]);
 		}
-	}
+	} 
 }
 
+var showItem = (function () {
+    var counter = 0;
+    return function () {
+    	if(counter < Object.keys(cart).length){
+    		alert(Object.keys(cart)[counter] + " Quantity :" + cart[Object.keys(cart)[counter]]);
+    		counter++;
+    	}else{
+    		isShowingCart = false;
+    		counter = 0;
+    		alert("Hey there! Are you still planning to buy something?");
+    	}
+    }
+})();
+
 function startTimer(){
-	console.log("Starting Timer")
 	inactiveTime = 0
-	timer = setInterval( function(){
-	if (inactiveTime < 29){
+	var timer = setInterval( function(){
+	if (inactiveTime < 5){
 		inactiveTime++;
 		console.log(inactiveTime)
 	}else{
-		alert("Hey there! Are you still planning to buy something?")
+		if(!isShowingCart){
+			alert("Hey there! Are you still planning to buy something?");
+		}else{
+			showItem();
+		}
 		clearInterval(timer);
 		startTimer()
 	}}, 1000)
+}
+
+function showCart(){
+	isShowingCart = true
+	inactiveTime = 0
 }
 
 window.onload = function () {
