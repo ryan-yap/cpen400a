@@ -1,0 +1,130 @@
+body{
+    width: 1000px;
+    vertical-align: middle;
+    margin: auto;
+}
+
+.product {
+    margin: 20px;
+    padding: 20px;
+    height: auto;
+    width: auto;
+    float: right;
+    text-align: center;
+}
+
+.product:hover {
+    cursor: pointer;
+	background-color: gray;
+}
+
+.addButton{
+	padding: 10px 15px 11px ;
+	font-size: 18px ;
+	background-color: #57d6c7;
+	font-weight: bold;
+	color: #ffffff;
+	cursor: pointer;
+	position:relative;
+	visibility:hidden;
+}
+
+.removeButton{
+	padding: 10px 15px 11px ;
+	font-size: 18px ;
+	background-color: #F36C8C;
+	font-weight: bold;
+	color: #ffffff;
+	cursor: pointer;
+	position:relative;
+	visibility: hidden;
+}
+
+#productList {
+    margin: auto;
+    padding: 0px;
+    width: auto;
+
+}
+
+.desc {
+    text-align: center;
+    font-weight: normal;
+    width: 200px;
+    margin: 0px;
+}
+
+
+#navigationMenu {
+	float: left;
+    width: 150px;
+    border: 2px solid black;
+}
+
+#showCart {
+    width: 150px;
+}
+
+#navigationMenu tr td{
+    list-style-type : none;
+    text-align: center;
+    height: 50px;
+}
+
+#navigationMenu tr:hover a{
+	color:red;
+}
+
+#navigationMenu tr:hover {
+	background-color:gray;
+}
+
+
+.price {
+    visibility: hidden;
+    position:relative;
+    margin-top: -40px;
+    background: rgba(204, 204, 204, 0.5);
+}
+
+.productPic {
+	position:absolute;
+	width : 200px;
+	height :200px;
+}
+.cart {
+	background: rgba(204, 204, 204, 0.5);
+	visibility:hidden;
+	position:relative;
+	width: 200px;
+	height: 200px;
+}
+
+.product:hover .price {
+	visibility: visible;
+}
+
+.product:hover .cart {
+	visibility: visible;
+	opacity: 0.6;
+}
+
+.product:hover .addButton{
+	visibility:visible;
+	top: -100px;
+}
+
+.product:hover .removeButton{
+	visibility:visible;
+	top: -100px;
+}
+
+#footer {
+    clear: both;
+    position: relative;
+    z-index: 10;
+    height: 3em;
+    margin-top: -3em;
+    text-align: center;
+}
+
