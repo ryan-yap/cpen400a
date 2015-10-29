@@ -1,12 +1,14 @@
 var cart = [];
+cart.total = 0; 
 
 var products = [];
 
-var verbose = true;
+var verbose = false;
 
 var inactiveTime = 0;
 
 var isShowingCart = false;
+
 
 function initializeProducts(){	
 	products = {
@@ -76,9 +78,11 @@ function addToCart(productName) {
 			}
 		}	
 		if(!found){
+			document.getElementById(productName).getElementsByClassName('removeButton')[0].style.display = "inline"
 			cart[productName] = 1; 
 		}		
 		products[productName].quantity--;
+		cart.total += products[productName].price; 
 	}
 	else{
 		alert("This item is not in stock you cannot add it to your cart");
@@ -97,12 +101,15 @@ function removeFromCart(productName) {
 	var found = false;
 	for(var i in cart){
 		if(productName == i){
-			if(cart[i] == 1)
+			if(cart[i] == 1){
 				delete cart[i];
+				document.getElementById(productName).getElementsByClassName('removeButton')[0].style.display = "none";				
+			}				
 			else{
-				cart[i]--; 
+				cart[i]--; 				
 			}
 			found = true;
+			cart.total -= products[productName].price; 
 			products[productName].quantity++;
 		}
 	}	
@@ -119,15 +126,15 @@ function removeFromCart(productName) {
 }
 
 var showItem = (function () {
-    var counter = 0;
+    var counter = 1;
     return function () {
     	if(counter < Object.keys(cart).length){
     		alert(Object.keys(cart)[counter] + " Quantity :" + cart[Object.keys(cart)[counter]]);
-    		counter++;
-    	}else{
-    		isShowingCart = false;
-    		counter = 0;
-    		alert("Hey there! Are you still planning to buy something?");
+    		if(++counter < Object.keys(cart).length){}
+			else{
+				isShowingCart = false;
+				counter = 1;
+			}			
     	}
     }
 })();
@@ -136,11 +143,13 @@ function startTimer(){
 	inactiveTime = 0
 	var timer = setInterval( function(){
 	if (inactiveTime < 3){
-		inactiveTime++;
+		inactiveTime++;	
 		console.log(inactiveTime)
 	}else{
 		if(!isShowingCart){
+			if(verbose){
 			alert("Hey there! Are you still planning to buy something?");
+			}
 		}else{
 			showItem();
 		}
@@ -155,5 +164,18 @@ function showCart(){
 }
 
 window.onload = function () {
+	timeoutElement = document.getElementById("timeout");
+	cartElement = document.getElementById("showCart")
     startTimer();
 };
+
+cart.watch('total', function (id, oldval, newval) {
+  cartElement.innerHTML = "Cart ($" + newval + ")"; 
+  return newval;
+});
+
+window.watch('inactiveTime',function(id, oldval, newval) {
+	console.log("The current timeout value is " + newval + '!')
+	timeoutElement.innerHTML = "The current timeout value is " + newval + '!'; 
+	return newval;
+});

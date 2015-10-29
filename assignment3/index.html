@@ -12,13 +12,12 @@
 	<div id ="header">
 		<span id="logo"> <img src="images/logo.png" alt="logo" /></span>
 		<span id="welcomeBanner"><img src="images/welcomebanner.png" alt="welcomeBanner" /></span>
+		<button id="showCart" onclick="showCart()">Cart ($0)</button>
 	</div>
 
 	<link rel="stylesheet" type="text/css" href="css/main.css" />
 
 	<script src="javascripts/default.js" type="text/javascript"></script>
-	<script src="http://ece.ubc.ca/~kbajaj/cpen400a/jquery.js" type="text/javascript"></script>
-	<script src="http://ece.ubc.ca/~gpli/CPEN400A/hw2/test.js" type="text/javascript"></script>
 
 </head>
 
@@ -61,7 +60,7 @@
 
 		<div id ="productList">
 			
-			<div class="product">
+			<div class="product" id = "Box1">
 				<img class ="productPic" src="products/Box1_$10.png" alt = "Box1"  />
 				<img class="cart" src="images/shopping-cart.png"  />
 				<p class="desc">Pencil Box</p>
@@ -70,7 +69,7 @@
 				<button class="removeButton" onclick="removeFromCart('Box1')">Remove</button>
 			</div>
 
-			<div class="product">
+			<div class="product" id= "Box2">
 				<img class ="productPic" src="products/Box2_$5.png" alt = "Box2"  />
 				<img class="cart" src="images/shopping-cart.png"  />
 				<p class="desc">Coloured Pencil Boxes</p>
@@ -79,7 +78,7 @@
 				<button class="removeButton" onclick="removeFromCart('Box2')">Remove</button>
 			</div>
 
-			<div class="product">
+			<div class="product" id= "Clothes1">
 				<img class ="productPic" src="products/Clothes1_$20.png" alt = "Clothes1"  />
 				<img class="cart" src="images/shopping-cart.png"  />
 				<p class="desc">Red Dress</p>
@@ -88,7 +87,7 @@
 				<button class="removeButton" onclick="removeFromCart('Clothes1')">Remove</button>
 			</div>
 
-			<div class="product">
+			<div class="product" id= "Clothes2">
 				<img class ="productPic" src="products/Clothes2_$30.png" alt = "Clothes2"  />
 				<img class="cart" src="images/shopping-cart.png"  />
 				<p class="desc">Red Top</p>
@@ -97,7 +96,7 @@
 				<button class="removeButton" onclick="removeFromCart('Clothes2')">Remove</button>
 			</div>
 
-			<div class="product">
+			<div class="product" id= "Jeans">
 				<img class ="productPic" src="products/Jeans_$50.png" alt = "Jeans"  />
 				<img class="cart" src="images/shopping-cart.png"  />
 				<p class="desc">Jeans</p>
@@ -106,7 +105,7 @@
 				<button class="removeButton" onclick="removeFromCart('Jeans')">Remove</button>
 			</div>
 
-			<div class="product">
+			<div class="product" id= "Keyboard1">
 				<img class ="productPic" src="products/KeyboardCombo_$40.png" alt = "Keyboard1"  />
 				<img class="cart" src="images/shopping-cart.png"  />
 				<p class="desc">Keyboard and Mouse</p>
@@ -115,7 +114,7 @@
 				<button class="removeButton" onclick="removeFromCart('KeyboardCombo')">Remove</button>
 			</div>
 
-			<div class="product">
+			<div class="product" id= "Keyboard2">
 				<img class ="productPic" src="products/Keyboard_$20.png" alt = "Keyboard2"  />
 				<img class="cart" src="images/shopping-cart.png"  />
 				<p class="desc">Keyboard</p>
@@ -124,7 +123,7 @@
 				<button class="removeButton" onclick="removeFromCart('Keyboard')">Remove</button>
 			</div>
 
-			<div class="product">
+			<div class="product" id= "Mouse">
 				<img class ="productPic" src="products/Mice_$20.png" alt = "Mouse"  />
 				<img class="cart" src="images/shopping-cart.png"  />
 				<p class="desc">Mouse</p>
@@ -133,7 +132,7 @@
 				<button class="removeButton" onclick="removeFromCart('Mice')">Remove</button>
 			</div>
 
-			<div class="product">
+			<div class="product" id= "PC1">
 				<img class ="productPic" src="products/PC1_$350.png" alt = "PC1"  />
 				<img class="cart" src="images/shopping-cart.png"  />
 				<p class="desc">Dell PC</p>
@@ -142,7 +141,7 @@
 				<button class="removeButton" onclick="removeFromCart('PC1')">Remove</button>
 			</div>
 
-			<div class="product">
+			<div class="product" id= "PC2">
 				<img class ="productPic" src="products/PC2_$400.png" alt = "PC2"  />
 				<img class="cart" src="images/shopping-cart.png"  />
 				<p class="desc">PC and Keyboard</p>
@@ -151,7 +150,7 @@
 				<button class="removeButton" onclick="removeFromCart('PC2')">Remove</button>
 			</div>
 
-			<div class="product">
+			<div class="product" id= "PC3">
 				<img class ="productPic" src="products/PC3_$300.png" alt = "PC3"  />
 				<img class="cart" src="images/shopping-cart.png"  />
 				<p class="desc">PC</p>
@@ -160,7 +159,7 @@
 				<button class="removeButton" onclick="removeFromCart('PC3')">Remove</button>
 			</div>
 
-			<div class="product">
+			<div class="product" id= "Tent">
 				<img class ="productPic" src="products/Tent_$100.png" alt = "Tent"  />
 				<img class="cart" src="images/shopping-cart.png" />
 				<p class="desc">Tent</p>
@@ -170,14 +169,13 @@
 			</div>
 
 		</div>
-		<div>
-			<button id="showCart" onclick="showCart()">Show Cart</button>
-		</div>
 	</div>
 </body>
 
 <footer id="footer">
+	<footer id="footer">
 	<br>Please Contact Ryan Yap & Kevin Xu! 
+	<p id = timeout> The current timeout value is 0! </p> 
 </footer>
 
 </html>
