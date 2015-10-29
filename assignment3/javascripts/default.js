@@ -3,7 +3,7 @@ cart.total = 0;
 
 var products = [];
 
-var verbose = false;
+var verbose = true;
 
 var inactiveTime = 0;
 
@@ -17,47 +17,47 @@ function initializeProducts(){
 			'quantity' : 10
 		},
 		'Box2' : {
-			'price' : 10,
+			'price' : 5,
 			'quantity' : 10
 		},
 		'Clothes1' : {
-			'price' : 10,
+			'price' : 20,
 			'quantity' : 10
 		},
 		'Clothes2' : {
-			'price' : 10,
+			'price' : 30,
 			'quantity' : 10
 		},
 		'Jeans' : {
-			'price' : 10,
+			'price' : 50,
 			'quantity' : 10
 		},
 		'Keyboard' : {
-			'price' : 10,
+			'price' : 20,
 			'quantity' : 10
 		},
 		'KeyboardCombo' : {
-			'price' : 10,
+			'price' : 40,
 			'quantity' : 10
 		},
 		'Mice' : {
-			'price' : 10,
+			'price' : 20,
 			'quantity' : 10
 		},
 		'PC1' : {
-			'price' : 10,
+			'price' : 350,
 			'quantity' : 10
 		},
 		'PC2' : {
-			'price' : 10,
+			'price' : 400,
 			'quantity' : 10
 		},
 		'PC3' : {
-			'price' : 10,
+			'price' : 300,
 			'quantity' : 10
 		},
 		'Tent' : {
-			'price' : 10,
+			'price' : 100,
 			'quantity' : 10
 		},
     };
@@ -142,7 +142,7 @@ var showItem = (function () {
 function startTimer(){
 	inactiveTime = 0
 	var timer = setInterval( function(){
-	if (inactiveTime < 3){
+	if (inactiveTime < 29){
 		inactiveTime++;	
 		console.log(inactiveTime)
 	}else{
