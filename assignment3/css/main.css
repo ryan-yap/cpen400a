@@ -63,6 +63,8 @@ body{
 }
 
 #showCart {
+	position:fixed;
+	right : 1px;
     width: 150px;
 	float: right;
 	background: #65a9d7;
