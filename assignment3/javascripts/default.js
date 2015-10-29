@@ -8,19 +8,57 @@ var inactiveTime = 0;
 
 var isShowingCart = false;
 
-function initializeProducts(){
-	products["Box1"] =			10;
-	products["Box2"] = 			10;
-	products["Clothes1"] = 		10;
-	products["Clothes2"] = 		10;
-	products["Jeans"] = 		10;
-	products["Keyboard"] = 		10;
-	products["KeyboardCombo"] = 10;
-	products["Mice"] = 			10;
-	products["PC1"] = 			10;
-	products["PC2"] = 			10;
-	products["PC3"] = 			10;
-	products["Tent"] = 			10;	
+function initializeProducts(){	
+	products = {
+		'Box1' : {
+			'price' : 10,
+			'quantity' : 10
+		},
+		'Box2' : {
+			'price' : 10,
+			'quantity' : 10
+		},
+		'Clothes1' : {
+			'price' : 10,
+			'quantity' : 10
+		},
+		'Clothes2' : {
+			'price' : 10,
+			'quantity' : 10
+		},
+		'Jeans' : {
+			'price' : 10,
+			'quantity' : 10
+		},
+		'Keyboard' : {
+			'price' : 10,
+			'quantity' : 10
+		},
+		'KeyboardCombo' : {
+			'price' : 10,
+			'quantity' : 10
+		},
+		'Mice' : {
+			'price' : 10,
+			'quantity' : 10
+		},
+		'PC1' : {
+			'price' : 10,
+			'quantity' : 10
+		},
+		'PC2' : {
+			'price' : 10,
+			'quantity' : 10
+		},
+		'PC3' : {
+			'price' : 10,
+			'quantity' : 10
+		},
+		'Tent' : {
+			'price' : 10,
+			'quantity' : 10
+		},
+    };
 }
 
 initializeProducts();
@@ -29,7 +67,7 @@ function addToCart(productName) {
 	inactiveTime = 0
 	console.log("Adding To Cart")
     var found = false; 
-    if(products[productName] > 0){
+    if(products[productName].quantity > 0){
 		for(var i in cart){
 			if(i == productName ){
 					cart[i]++;
@@ -40,7 +78,7 @@ function addToCart(productName) {
 		if(!found){
 			cart[productName] = 1; 
 		}		
-		products[productName]--;
+		products[productName].quantity--;
 	}
 	else{
 		alert("This item is not in stock you cannot add it to your cart");
@@ -65,7 +103,7 @@ function removeFromCart(productName) {
 				cart[i]--; 
 			}
 			found = true;
-			products[productName]++;
+			products[productName].quantity++;
 		}
 	}	
 	if(!found){
@@ -97,7 +135,7 @@ var showItem = (function () {
 function startTimer(){
 	inactiveTime = 0
 	var timer = setInterval( function(){
-	if (inactiveTime < 29){
+	if (inactiveTime < 3){
 		inactiveTime++;
 		console.log(inactiveTime)
 	}else{
