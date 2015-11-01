@@ -96,6 +96,7 @@ function addToCart(productName) {
 			console.log("ProductName:" + j + " Quantity" + cart[j]);
 		}
 	}
+	configTable()
 }
 
 function removeFromCart(productName) {
@@ -127,6 +128,7 @@ function removeFromCart(productName) {
 			console.log("ProductName:" + j + " Quantity" + cart[j]);
 		}
 	} 
+	configTable()
 }
 
 var showItem = (function () {
@@ -167,7 +169,44 @@ function startTimer(){
 function showCart(){
 	isShowingCart = true
 	inactiveTime = 0
-	
+	console.log("Show Cart")
+	configTable()
+}
+
+function configTable(){
+	var table = document.getElementById("CartItems");
+	table.innerHTML = "";
+	for(var j in cart){
+		if (j != "total"){
+			var row = table.insertRow(0);
+	    	var cell1 = row.insertCell(0);
+	    	var cell2 = row.insertCell(1);
+	    	var cell3 = row.insertCell(2);
+	    	var cell4 = row.insertCell(3);
+	    	var cell5 = row.insertCell(4);
+	    	cell1.innerHTML = j;
+	    	cell2.innerHTML = cart[j];
+	    	price = parseInt(products[j].price)
+	    	quantity = parseInt(cart[j])
+	    	cell3.innerHTML = (price*quantity).toString()
+	    	cell4.innerHTML = '<button onclick=\'addToCart("'+ j +'")\'>+</button>'
+	    	cell5.innerHTML = '<button onclick=\'removeFromCart("'+ j +'")\'>-</button>'
+    	}else{
+    		var row = table.insertRow(0);
+	    	var cell1 = row.insertCell(0);
+	    	var cell2 = row.insertCell(1);
+	    	var cell3 = row.insertCell(2);
+	    	cell1.innerHTML = j;
+	    	cell3.innerHTML = cart[j];
+    	}
+	}
+	var row = table.insertRow(0);
+	var cell1 = row.insertCell(0);
+	var cell2 = row.insertCell(1);
+	var cell3 = row.insertCell(2);
+	cell1.innerHTML = "<strong>Product Name</strong>"
+	cell2.innerHTML = "<strong>Quantity</strong>"
+	cell3.innerHTML = "<strong>Price</strong>"
 }
 
 window.onload = function () {
