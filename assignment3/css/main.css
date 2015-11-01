@@ -64,6 +64,7 @@ body{
 
 #showCart {
 	position:fixed;
+	z-index : 5;
 	right : 1px;
     width: 150px;
 	float: right;
