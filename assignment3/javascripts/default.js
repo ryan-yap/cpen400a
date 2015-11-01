@@ -173,9 +173,15 @@ function showCart(){
 	configTable()
 }
 
+// Method to reload a table. 
 function configTable(){
+	// Getting the table node
 	var table = document.getElementById("CartItems");
+
+	// Clearing everything inside the table
 	table.innerHTML = "";
+
+	//Iterate through items in the cart, and print stuffs inside the table
 	for(var j in cart){
 		if (j != "total"){
 			var row = table.insertRow(0);
@@ -200,6 +206,8 @@ function configTable(){
 	    	cell3.innerHTML = cart[j];
     	}
 	}
+
+	// Adding titles for every single columns
 	var row = table.insertRow(0);
 	var cell1 = row.insertCell(0);
 	var cell2 = row.insertCell(1);
@@ -208,6 +216,13 @@ function configTable(){
 	cell2.innerHTML = "<strong>Quantity</strong>"
 	cell3.innerHTML = "<strong>Price</strong>"
 }
+
+// Capture the escape key to trigger an action to hide the modal
+$(document).keyup(function(e) {
+     if (e.keyCode == 27) { 
+        $('#Overlay').modal('hide');
+    }
+});
 
 window.onload = function () {
 	timeoutElement = document.getElementById("timeout");
