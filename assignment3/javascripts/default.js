@@ -67,6 +67,7 @@ initializeProducts();
 
 function addToCart(productName) {
 	inactiveTime = 0
+	timeoutElement.innerHTML = "The current timeout value is " + inactiveTime + '!';
 	console.log("Adding To Cart")
     var found = false; 
     if(products[productName].quantity > 0){
@@ -83,6 +84,7 @@ function addToCart(productName) {
 		}		
 		products[productName].quantity--;
 		cart.total += products[productName].price; 
+		cartElement.innerHTML = "Cart ($" + cart.total + ")"; 
 	}
 	else{
 		alert("This item is not in stock you cannot add it to your cart");
@@ -98,6 +100,7 @@ function addToCart(productName) {
 
 function removeFromCart(productName) {
 	inactiveTime = 0
+	timeoutElement.innerHTML = "The current timeout value is " + inactiveTime + '!';	
 	var found = false;
 	for(var i in cart){
 		if(productName == i){
@@ -110,6 +113,7 @@ function removeFromCart(productName) {
 			}
 			found = true;
 			cart.total -= products[productName].price; 
+			cartElement.innerHTML = "Cart ($" + cart.total + ")"; 
 			products[productName].quantity++;
 		}
 	}	
@@ -141,9 +145,11 @@ var showItem = (function () {
 
 function startTimer(){
 	inactiveTime = 0
+	timeoutElement.innerHTML = "The current timeout value is " + inactiveTime + '!'; 
 	var timer = setInterval( function(){
 	if (inactiveTime < 29){
 		inactiveTime++;	
+		timeoutElement.innerHTML = "The current timeout value is " + inactiveTime + '!'; 
 		console.log(inactiveTime)
 	}else{
 		if(!isShowingCart){
@@ -161,6 +167,7 @@ function startTimer(){
 function showCart(){
 	isShowingCart = true
 	inactiveTime = 0
+	
 }
 
 window.onload = function () {
@@ -168,14 +175,3 @@ window.onload = function () {
 	cartElement = document.getElementById("showCart")
     startTimer();
 };
-
-cart.watch('total', function (id, oldval, newval) {
-  cartElement.innerHTML = "Cart ($" + newval + ")"; 
-  return newval;
-});
-
-window.watch('inactiveTime',function(id, oldval, newval) {
-	console.log("The current timeout value is " + newval + '!')
-	timeoutElement.innerHTML = "The current timeout value is " + newval + '!'; 
-	return newval;
-});
