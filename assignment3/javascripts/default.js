@@ -197,7 +197,7 @@ function configTable(){
 	    	var cell1 = row.insertCell(0);
 	    	var cell2 = row.insertCell(1);
 	    	var cell3 = row.insertCell(2);
-	    	cell1.innerHTML = j;
+	    	cell1.innerHTML = "Total";
 	    	cell3.innerHTML = cart[j];
     	}
 	}
@@ -228,11 +228,10 @@ function toggleOverlay(){
 function keyEvent(e) {
 	console.log(e);
 	console.log(e.keyCode);
-	if(e.keyCode == 27 && overlay.style.display == "block"){
+	if(e.key == 27 && overlay.style.display == "block"){
 		overlay.style.display = "none";
 		overlayContent.style.display = "none";
 	}
-    // gets called when any of the keyboard events are overheard
 }
 
 window.addEventListener("keyup", keyEvent, false);
