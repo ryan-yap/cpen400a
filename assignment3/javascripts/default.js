@@ -163,7 +163,7 @@ function startTimer(){
 }
 
 function showCart(){
-	isShowingCart = true
+	//isShowingCart = true
 	inactiveTime = 0
 	toggleOverlay();	
 }
