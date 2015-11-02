@@ -96,7 +96,7 @@ function addToCart(productName) {
 			console.log("ProductName:" + j + " Quantity" + cart[j]);
 		}
 	}
-	configTable()
+	configTable();
 }
 
 function removeFromCart(productName) {
@@ -128,10 +128,10 @@ function removeFromCart(productName) {
 			console.log("ProductName:" + j + " Quantity" + cart[j]);
 		}
 	} 
-	configTable()
+	configTable();
 }
 
-var showItem = (function () {
+/*var showItem = (function () {
     var counter = 1;
     return function () {
     	if(counter < Object.keys(cart).length){
@@ -143,24 +143,20 @@ var showItem = (function () {
 			}			
     	}
     }
-})();
+})(); */
 
 function startTimer(){
 	inactiveTime = 0
 	timeoutElement.innerHTML = "The current timeout value is " + inactiveTime + '!'; 
 	var timer = setInterval( function(){
-	if (inactiveTime < 29){
+	if (inactiveTime < 299){
 		inactiveTime++;	
 		timeoutElement.innerHTML = "The current timeout value is " + inactiveTime + '!'; 
 		console.log(inactiveTime)
 	}else{
-		if(!isShowingCart){
-			if(verbose){
+		if(verbose){
 			alert("Hey there! Are you still planning to buy something?");
-			}
-		}else{
-			showItem();
-		}
+		}		
 		clearInterval(timer);
 		startTimer()
 	}}, 1000)
@@ -169,14 +165,13 @@ function startTimer(){
 function showCart(){
 	isShowingCart = true
 	inactiveTime = 0
-	console.log("Show Cart")
-	configTable()
+	toggleOverlay();	
 }
 
 // Method to reload a table. 
 function configTable(){
 	// Getting the table node
-	var table = document.getElementById("CartItems");
+	var table = document.getElementById("cartItems");
 
 	// Clearing everything inside the table
 	table.innerHTML = "";
@@ -217,15 +212,36 @@ function configTable(){
 	cell3.innerHTML = "<strong>Price</strong>"
 }
 
-// Capture the escape key to trigger an action to hide the modal
-$(document).keyup(function(e) {
-     if (e.keyCode == 27) { 
-        $('#Overlay').modal('hide');
-    }
-});
+function toggleOverlay(){
+	overlay.style.opacity = .8;
+	if(overlay.style.display == "block"){
+		overlay.style.display = "none";
+		overlayContent.style.display = "none";
+	} else {
+		overlay.style.display = "block";
+		overlayContent.style.display = "block";
+	}
+	
+	configTable();
+}
+
+function keyEvent(e) {
+	if(e.keyCode == 27 && overlay.style.display == "block"){
+		overlay.style.display = "none";
+		overlayContent.style.display = "none";
+	}
+    // gets called when any of the keyboard events are overheard
+}
+
+window.addEventListener("keypress", keyEvent, false);
+
+
 
 window.onload = function () {
 	timeoutElement = document.getElementById("timeout");
-	cartElement = document.getElementById("showCart")
+	cartElement = document.getElementById("showCart");
+	overlay = document.getElementById('overlay');
+	overlayContent = document.getElementById('overlayContent');
+	overlayProducts = document.getElementById('overlayProducts');
     startTimer();
 };
