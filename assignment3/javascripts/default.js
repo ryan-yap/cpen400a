@@ -226,7 +226,6 @@ function toggleOverlay(){
 }
 
 function keyEvent(e) {
-	console.log("abcde");
 	console.log(e);
 	console.log(e.keyCode);
 	if(e.keyCode == 27 && overlay.style.display == "block"){
@@ -236,7 +235,7 @@ function keyEvent(e) {
     // gets called when any of the keyboard events are overheard
 }
 
-window.addEventListener("keypress", keyEvent, false);
+window.addEventListener("keyup", keyEvent, false);
 
 
 
