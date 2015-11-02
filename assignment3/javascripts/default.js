@@ -226,6 +226,7 @@ function toggleOverlay(){
 }
 
 function keyEvent(e) {
+	console.log("abcde");
 	if(e.keyCode == 27 && overlay.style.display == "block"){
 		overlay.style.display = "none";
 		overlayContent.style.display = "none";
