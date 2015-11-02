@@ -197,7 +197,7 @@ function configTable(){
 	    	var cell1 = row.insertCell(0);
 	    	var cell2 = row.insertCell(1);
 	    	var cell3 = row.insertCell(2);
-	    	cell1.innerHTML = "Total";
+	    	cell1.innerHTML = "<strong>Total</strong>";
 	    	cell3.innerHTML = cart[j];
     	}
 	}
