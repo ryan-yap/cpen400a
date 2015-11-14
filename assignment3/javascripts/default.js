@@ -228,7 +228,7 @@ function toggleOverlay(){
 function keyEvent(e) {
 	console.log(e);
 	console.log(e.keyCode);
-	if(e.key == 27 && overlay.style.display == "block"){
+	if(e.keyCode == 27 && overlay.style.display == "block"){
 		overlay.style.display = "none";
 		overlayContent.style.display = "none";
 	}
