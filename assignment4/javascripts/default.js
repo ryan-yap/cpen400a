@@ -199,6 +199,9 @@ function ajaxRequest(requestNumber) {
                 {
 					checkoutProducts = JSON.parse(xhttp.responseText);
                     CompareCheckout();
+                    RecalculateTotal();
+                    products = checkoutProducts;
+                    configTable();
                 }
 				console.log(products);
 				console.log("request successful!");
@@ -243,20 +246,33 @@ function CompareCheckout() {
 	for(var i in cart){
         console.log(i);
         if(i != "total"){
-            if(products[i].price != checkoutProducts[i].price)
-                alert(i + "'s price has changed!");
             if(checkoutProducts[i].quantity < cart[i]){
-                alert(i + "'s stock has changed!"); 
-                cart[i] = checkoutProducts[i].quantity;	
+                if(checkoutProducts[i].quantity == 0)
+                    alert(i + " is no longer available and has been removed from your cart."); 
+                else {
+                    alert(i + "'s quantity has lowered, only " + checkoutProducts[i].quantity + " are in your cart now!"); 
+                    cart[i] = checkoutProducts[i].quantity;	
+                }
             }
+            if(products[i].price != checkoutProducts[i].price)
+                alert(i + "'s price has changed to :" + checkoutProducts[i].price);
 		}
 	}
-    configTable();
 }
 
 function RecalculateTotal() {
+    var old = cart.total;
     cart.total = 0; 
-    
+    for(var i in cart){ 
+        if(i != "total"){
+            cart.total += checkoutProducts[i].price * cart[i]; 
+        }
+    }
+    if( old != cart.total ){ 
+        alert("Cart Total Changed! New Total is : " + cart.total ); 
+    } 
+    cartElement.innerHTML = "Cart ($" + cart.total + ")"; 
+
 }
 /* Legacy Functions Below! */ 
 
