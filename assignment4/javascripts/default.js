@@ -9,7 +9,9 @@ var inactiveTime = 0;
 
 var isShowingCart = false;
 
-var AJAXFailed = true;
+var AJAXFailed = [];
+AJAXFailed[0] = true;
+AJAXFailed[1] = true;
 
 var checkoutProducts = [];
 
@@ -182,19 +184,22 @@ window.onload = function () {
 	overlayContent = document.getElementById('overlayContent');
 	overlayProducts = document.getElementById('overlayProducts');
     startTimer();
-	ajaxRequest(1);
+	ajaxRequest(0);
 };
 
 function ajaxRequest(requestNumber) {
 	var xhttp = new XMLHttpRequest(); 
-	xhttp.timeout = 2000; 
+	xhttp.timeout = 500; 
 	xhttp.onreadystatechange = function() { 
 		if ( xhttp.readyState == 4 && xhttp.status == 200) {
-				AJAXFailed = false; 
-				if(requestNumber == 1)
+				AJAXFailed[requestNumber] = false; 
+				if(requestNumber == 0)
 					products = JSON.parse(xhttp.responseText);
-				else if (requestNumber == 2)
+				else if (requestNumber == 1)
+                {
 					checkoutProducts = JSON.parse(xhttp.responseText);
+                    CompareCheckout();
+                }
 				console.log(products);
 				console.log("request successful!");
 				console.log(xhttp.responseText);
@@ -205,13 +210,13 @@ function ajaxRequest(requestNumber) {
 	};
 	xhttp.ontimeout = function() { 
 		console.log("Request timed out.");
-			if(AJAXFailed == true){
+			if(AJAXFailed[requestNumber] == true){
 				ajaxRequest(requestNumber);
 			}
 	};
 	xhttp.onerror = function(){
 		console.log("AJAX Error Occured.");
-			if(AJAXFailed == true){
+			if(AJAXFailed[requestNumber] == true){
 				ajaxRequest(requestNumber);
 			}
 	};
@@ -227,14 +232,28 @@ function ajaxRequest(requestNumber) {
 }
 
 function Checkout() {
-	ajaxRequest(2);
+    AJAXFailed[1] = true; 
+	ajaxRequest(1);
+}
+
+function CompareCheckout() { 
 	for(var i in cart){
-		if(products.i != checkoutProducts.i){
-			console.log("Theres a difference!!!");
+        console.log(i);
+        if(i != "total"){
+            if(products[i].price != checkoutProducts[i].price)
+                alert(i + "'s price has changed!");
+            if(checkoutProducts[i].quantity < cart[i]){
+                alert(i + "'s stock has changed!"); 
+                cart[i] = checkoutProducts[i].quantity;	
+            }
 		}
-		else
-			console.log("It's the same!!!");
 	}
+    configTable();
+}
+
+function RecalculateTotal() {
+    cart.total = 0; 
+    
 }
 /* Legacy Functions Below! */ 
 
