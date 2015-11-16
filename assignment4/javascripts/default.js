@@ -91,7 +91,7 @@ function startTimer(){
 	if (inactiveTime < 299){
 		inactiveTime++;	
 		timeoutElement.innerHTML = "The current timeout value is " + inactiveTime + '!'; 
-		console.log(inactiveTime)
+		//console.log(inactiveTime)
 	}else{
 		if(verbose){
 			alert("Hey there! Are you still planning to buy something?");
@@ -167,7 +167,7 @@ function toggleOverlay(){
 function keyEvent(e) {
 	console.log(e);
 	console.log(e.keyCode);
-	if(e.key == 27 && overlay.style.display == "block"){
+	if(e.keyCode == 27 && overlay.style.display == "block"){
 		overlay.style.display = "none";
 		overlayContent.style.display = "none";
 	}
@@ -189,7 +189,7 @@ window.onload = function () {
 
 function ajaxRequest(requestNumber) {
 	var xhttp = new XMLHttpRequest(); 
-	xhttp.timeout = 500; 
+	xhttp.timeout = 3000; 
 	xhttp.onreadystatechange = function() { 
 		if ( xhttp.readyState == 4 && xhttp.status == 200) {
 				AJAXFailed[requestNumber] = false; 
@@ -204,10 +204,16 @@ function ajaxRequest(requestNumber) {
 				console.log("request successful!");
 				console.log(xhttp.responseText);
 		}
-		else{
-			console.log("Request Failed");
+		else if(xhttp.readyState == 4 && xhttp.status == 500){
+			console.log(xhttp.readyState);
+			console.log(xhttp.status);
+			if(AJAXFailed[requestNumber] == true){
+				ajaxRequest(requestNumber);
+				console.log("Request Failed, sending another request");
+			}
 		}
 	};
+
 	xhttp.ontimeout = function() { 
 		console.log("Request timed out.");
 			if(AJAXFailed[requestNumber] == true){
@@ -222,9 +228,6 @@ function ajaxRequest(requestNumber) {
 	};
 	xhttp.onabort = function(){
 		console.log("AJAX Request Aborted");
-			if(AJAXFailed == true){
-				ajaxRequest(requestNumber);
-			}
 	};
 
 	xhttp.open("GET", "https://cpen400a.herokuapp.com/products", true);
