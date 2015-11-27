@@ -252,6 +252,7 @@ function CompareCheckout() {
                 else {
                     alert(i + "'s quantity has lowered, only " + checkoutProducts[i].quantity + " are in your cart now!"); 
                     cart[i] = checkoutProducts[i].quantity;	
+                    checkoutProducts[i].quantity = 0;
                 }
             }
             if(products[i].price != checkoutProducts[i].price)
